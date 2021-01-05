@@ -5,15 +5,10 @@
 
 void print_lines(char *str, char *word){
     char delim_lines[] = {"\n\r"};
-    int flag=0;
     char *p = strtok(str, delim_lines);
     while(p != NULL){
             if (strstr(p, word) != NULL){
-                if(flag){
-                    printf("\n");
-                }
-                flag=1;
-                printf("%s", p);
+                printf("%s\n", p);
             }
             p = strtok(NULL, delim_lines);
         }
@@ -21,25 +16,16 @@ void print_lines(char *str, char *word){
 
 void print_similar_words(char *str, char *word){
     char delim_words[] = {" \t\n\r"};
-    int flag=0;
     char *p = strtok(str, delim_words);
     while(p != NULL){
             if(strlen(p) == strlen(word)){
-                if (strcmp(p, word)==0){
-                    if(flag){
-                        printf("\n");
-                    }
-                flag=1;                    
-                printf("%s", p);
+                if (strcmp(p, word)==0){                 
+                    printf("%s\n", p);
                 }
             }
             if(strlen(p) == strlen(word)+1){
-                if(similar(p,word)){
-                    if(flag){
-                        printf("\n");
-                    }
-                flag=1;                    
-                printf("%s", p);
+                if(similar(p,word)){                    
+                    printf("%s\n", p);
                 }
             }
             p = strtok(NULL, delim_words);
